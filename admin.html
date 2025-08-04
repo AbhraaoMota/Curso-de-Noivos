@@ -1,0 +1,74 @@
+<!-- inscritos.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lista de Inscritos</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f4f4f4; }
+    .botoes { margin: 20px 0; display: flex; gap: 10px; }
+  </style>
+</head>
+<body id="admin2" class="fundo-bege">
+
+   <!-- A senha aparece primeiro -->
+<h1 id="titulo-senha">Para acessar coloque a senha!</h1>
+<div id="senha-area">
+  <input type="password" id="senha" placeholder="Digite a senha para acessar" /><br><br>
+  <a class="btn" onclick="verificarSenha()">Entrar</a><br><br>
+  <a class="btn" href="index.html">Voltar</a>
+  <p id="erro-senha" style="color:red; display:none;">Senha incorreta!</p>
+</div>
+
+<main class="hidden" id="conteudo" style="margin-top: 0; padding-top: 0;">
+  <h1>📋 Lista de Inscritos</h1>
+  <div id="contador-inscricoes" class="contador">
+    <p><strong>Total de inscritos:</strong> <span id="total-inscritos">0</span> / 160</p>
+    <p><strong>Vagas restantes:</strong> <span id="vagas-restantes">160</span></p>
+  </div>
+  <div class="botoes">
+    <button onclick="exportarPDF()">🖨️ Gerar PDF</button>
+    <button onclick="location.reload()">🔄 Atualizar</button>
+    <a class="btn" href="index.html">Voltar</a>
+  </div>
+  <table id="tabela-inscritos">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cônjuge</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Igreja</th>
+        <th>Estado Civil</th>
+        <th>Pagamento</th>
+        <th>Data</th>        
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</main>
+
+ 
+
+  <div id="lista-inscritos" class="hidden"></div>
+
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+ <!-- jsPDF (PDF export) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- 👇 Necessário para gerar tabela no PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+  <!-- SheetJS (Excel export) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script type="module" src="ins.js"></script>
+</body>
+</html>

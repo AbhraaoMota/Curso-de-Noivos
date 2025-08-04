@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inscrição - Noivos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin">  
+  <main>
+    <img src="Aliança.png" alt="Aliança" class="alianca" />
+
+    <h1>Faça sua Inscrição!</h1>
+
+    <!-- 🔒 Esta div aparece só após o cadastro ser concluído -->
+    <div class="confirmacao hidden">
+      <h2>✅ Cadastro Concluído!</h2>
+      <p>Enviamos um e-mail com os detalhes da sua inscrição.</p>
+      <button onclick="reenviarEmail()">🔁 Reenviar E-mail</button><br>
+      <button onclick="excluirCadastro()">❌ Excluir Cadastro</button>
+    </div>
+
+    <!-- Formulário aparece por padrão -->
+    <form class="formulario">
+      <input type="text" name="nome" placeholder="Nome completo" required />
+      <input type="text" name="nome_conj" placeholder="Nome do(a) cônjuge" required />
+      <input type="tel" name="telefone" placeholder="Telefone com DDD" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="igreja" placeholder="De qual igreja você é?" required />
+      <select name="estado_civil" required>
+        <option value="" disabled selected>Estado civil</option>
+        <option value="Namorando para casar">Namorando para casar</option>
+        <option value="Noivo">Noivo(a)</option>
+        <option value="Casado">Casado(a) a 1 ano</option>
+      </select>
+      <select name="forma_pagamento" required>
+        <option value="" disabled selected>Forma de pagamento</option>
+        <option value="Pix">Pix</option>
+        <option value="Dinheiro">Dinheiro</option>
+        <option value="Cartão">Cartão</option>
+      </select>
+
+      <p class="obs">💡 Será cobrada uma taxa por casal. <br> Verifique as informações no seu e-mail após a inscrição.</p>
+      
+      <button type="submit" class="btn">ENVIAR INSCRIÇÃO</button>
+      <a class="btn" href="index.html">Voltar</a>
+    </form>
+
+    <div class="logos">
+      <img src="Ad Agape.png" alt="Adágape" />
+      <img src="juva.png" alt="Juva" />
+    </div>
+  </main>
+
+  <div id="aviso-limite" class="aviso-limite hidden">
+    ⚠️ Infelizmente as inscrições foram encerradas! 
+    <br> 
+    Todas as vagas disponíveis já foram preenchidas.
+  </div>
+
+ 
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("bUXyH741TqL2Kv7Mb");
+  </script>
+
+   <!-- Firebase + script -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

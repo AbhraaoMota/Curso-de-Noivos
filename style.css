@@ -1,0 +1,323 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url("BACKGROUND.png");
+  background-size: cover;
+  background-position: center;
+  color: #5c3b32;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+header {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.menu-toggle {
+  font-size: 30px;
+  cursor: pointer;
+  color: #5c3b32;
+  z-index: 10;
+}
+
+nav.hidden {
+  display: none;
+}
+
+nav ul {
+  list-style: none;
+  background: #ffffffcc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #5c3b32;
+  font-weight: 500;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+body.admin main {
+  min-height: unset;
+  padding-top: 40px;
+}
+
+.alianca {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.versiculo {
+  max-width: 700px;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.btn {
+  padding: 10px 30px;
+  background-color: white;
+  color: #5c3b32;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #eee;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.logos img {
+  width: 120px;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.formulario input,
+.formulario select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input, select, textarea {
+  text-transform: uppercase;
+}
+
+.mensagem-concluido {
+  background-color: #ccc;
+  color: #5c3b32;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.confirmacao {
+  background-color: #ccc;
+  border: 1px solid #5c3b32;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px auto;
+  text-align: center;
+  max-width: 400px;
+}
+
+.confirmacao h2 {
+  color: #006600;
+}
+
+.confirmacao button {
+  background: #5c3b32;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirmacao a {
+  display: block;
+  margin-top: 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ==== Tabela admin ==== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f7f7f7;
+  font-weight: bold;
+  color: #5c3b32;
+}
+
+tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* ==== Botões exportar ==== */
+.botoes {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botoes button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #5c3b32;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+.botoes button:hover {
+  background-color: #7b5248;
+}
+
+/* ==== Área de senha admin ==== */
+#senha-area {
+  margin-top: 30px;
+  background: #ffffffdd;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#senha-area input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* ==== Mensagem de erro senha ==== */
+#erro-senha {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+body.fundo-bege {
+  background: #D2B48C !important; /* bege claro */
+  background-image: none !important;
+}
+
+#conteudo {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: unset;
+}
+
+.obs {
+  font-size: 14px;
+  color: #5c3b32;
+  font-style: italic;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.aviso-limite {
+  background-color: #ffe6e6;
+  color: #8b0000;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid #ffcccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.contador {
+  background: #eee;
+  border: 2px solid #5c3b32;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
+  color: #5c3b32;
+}
