@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const totalInscritos = snapshot.size;
 
   if (totalInscritos >= LIMITE_INSCRITOS) {
-  const aviso = document.getElementById("aviso-limite");
-  if (aviso) aviso.classList.remove("hidden");
-  form.classList.add("hidden");
-  return;
-}
+    const aviso = document.getElementById("aviso-limite");
+    if (aviso) aviso.classList.remove("hidden");
+    form.classList.add("hidden");
+    return;
+  }
 
   // Verifica se já existe inscrição no localStorage
   if (localStorage.getItem("inscrito") === "true") {
@@ -77,20 +77,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // Envio do formulário
+  // 🚀 Envio do formulário
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const nome = e.target.nome.value.toUpperCase();
     const nome_conj = e.target.nome_conj.value.toUpperCase();
     const telefone = e.target.telefone.value;
-    const email = e.target.email.value.trim();
+    const email = e.target.email.value.trim().toLowerCase(); // normaliza email
     const igreja = e.target.igreja.value.toUpperCase();
     const estado_civil = e.target.estado_civil.value.toUpperCase();
     const forma_pagamento = e.target.forma_pagamento.value.toUpperCase();
 
     try {
-      await addDoc(collection(db, "inscritos"), {
+      // 🔍 Verifica se já existe esse email cadastrado
+      const q = query(inscritosRef, where("email", "==", email));
+      const snapshot = await getDocs(q);
+
+      if (!snapshot.empty) {
+        alert("⚠️ Este e-mail já está cadastrado.");
+        return;
+      }
+
+      // Cria documento novo sempre
+      await addDoc(inscritosRef, {
         nome,
         nome_conj,
         telefone,
@@ -101,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         data: new Date()
       });
 
+      // Envia email de confirmação
       await emailjs.send("service_xy6m14t", "template_oyzfclf", {
         nome,
         nome_conj,
@@ -111,6 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         forma_pagamento
       });
 
+      // Salva no localStorage
       localStorage.setItem("inscrito", "true");
       localStorage.setItem("email", email);
       localStorage.setItem("nome", nome);
@@ -198,15 +210,3 @@ window.excluirCadastro = async () => {
     alert("❌ Erro ao excluir o cadastro.");
   }
 };
-
-// Toggle menu mobile
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
-
-  if (toggle && menu) {
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  }
-});
