@@ -1,5 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { 
+  getFirestore, 
+  collection, 
+  getDocs, 
+  query, 
+  orderBy 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Firebase config
 const firebaseConfig = {
@@ -49,7 +55,9 @@ async function carregarInscritos() {
   tbody.innerHTML = "";
   inscritos = [];
 
-  const querySnapshot = await getDocs(collection(db, "inscritos"));
+  // 🔑 Busca todos os documentos e ordena pela data
+  const q = query(collection(db, "inscritos"), orderBy("data", "asc"));
+  const querySnapshot = await getDocs(q);
 
   querySnapshot.forEach((doc) => {
     const data = doc.data();
