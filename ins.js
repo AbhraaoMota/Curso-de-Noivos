@@ -98,7 +98,12 @@ async function carregarInscritos() {
 }
 
 // Exportar PDF
-window.exportarPDF = () => {
+window.exportarPDF = async () => {
+  // 🔄 Garante que os dados estão atualizados antes de exportar
+  if (inscritos.length === 0) {
+    await carregarInscritos();
+  }
+
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
@@ -119,7 +124,7 @@ window.exportarPDF = () => {
     startY: 35,
     styles: {
       fontSize: 10,
-      textColor: [255, 255, 255],
+      textColor: [0, 0, 0], // corrigido para preto
       lineColor: [92, 59, 50],
       lineWidth: 0.3,
     },
